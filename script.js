@@ -1,6 +1,7 @@
-
 let pullDownButton = document.getElementById("lists");
 let pullDownParents = document.getElementById("pull-down");
+let pullDownChild = document.querySelectorAll(".pull-down-list");
+let currentList = document.getElementById("current-list");
 
 pullDownButton.addEventListener("mouseover", function () {
   this.style.backgroundColor = "blue";
@@ -22,4 +23,30 @@ pullDownButton.addEventListener("click", function () {
   }
   this.style.backgroundColor = "green";
   console.log("クリックは緑色");
+});
+
+pullDownChild.forEach(function pullDown(list) {
+  list.addEventListener("click", function () {
+    console.log(list);
+    const value = list.innerHTML;
+    currentList.innerHTML = value;
+    window.addEventListener("load", pullDown);
+
+    switch (value) {
+      case "リスト1":
+        window.location.href = "https://www.google.com/";
+        break;
+      case "リスト2":
+        window.location.href = "https://www.yahoo.co.jp/";
+        break;
+      case "リスト3":
+        window.location.href = "https://www.bing.com/";
+        break;
+      case "リスト4":
+        window.location.href = "https://www.naver.com/";
+        break;
+      default:
+        break;
+    }
+  });
 });
